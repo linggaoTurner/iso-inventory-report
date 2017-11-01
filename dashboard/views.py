@@ -145,13 +145,7 @@ def data_consolidate(contacts,payers,roles):
             row['iso_role_arn'] = 'No Cross-Account Role'
         row['payer_id'] = str(row['payer_id'])
 
-    table_name = 'aws-inventory-report'
-    existing_tables = db.list_tables()['TableNames']
-    if table_name in existing_tables:
-    else:
-        response = db.create_table(
-            TableName = table_name,
-            
+
     return newdf.to_dict('records')
 
 '''
