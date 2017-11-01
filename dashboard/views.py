@@ -97,13 +97,13 @@ def update_info(request):
 
 
 def get_contacts():
-    return scan_all_items('aws-inventory-contacts')
+    return scan_all_items(db,'aws-inventory-contacts')
 
 def get_payer():
-    return scan_all_items('aws-inventory-payerlist')
+    return scan_all_items(db,'aws-inventory-payerlist')
 
 def get_roles():
-    return scan_all_items('aws-inventory-roles')
+    return scan_all_items(db,'aws-inventory-roles')
 
 def data_consolidate(contacts,payers,roles):
     contactDF = pd.DataFrame(contacts)
