@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html' %}
+{% load staticfiles %}
+{% block title %} Homepage - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="container-fluid" >
+  <form action={% url 'update_info' %} id="cross_account_table" method="post">
+    {% csrf_token %}
+    <label>Total Active Accounts:{{ totalData }}</label>
+    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th><label>Account Name</label></td>
+          <th><label>Account ID</label></td>
+          <th><label>Parent</label></td>
+          <th><label>Exec Sponsor</label></td>
+          <th><label>Exec Sponsor Email</label></td>
+          <th><label>Tech Contacts</label></td>
+          <th><label>Tech Contacts Email</label></td>
+          <th><label>Assume Role Link</label></td>
+          <th><label>Template Version</label></td>
+        </tr>
+      </head>
+      <tbody>
+    {% for data in dataset %}
+      <tr>
+        <td>{{ data.account_name }}</td>
+        <td><label name='account_id'>{{ data.account_id }}</label></td>
+        <td>{{ data.payer_id }}</td>
+        <td><input id='ExecutiveSponsor' type="text" name="ExecutiveSponsor" value={{ data.ExecutiveSponsor }}></td>
+        <td><input id='ExecutiveSponsorEmail' type="text" name="ExecutiveSponsorEmail" value={{ data.ExecutiveSponsorEmail }}></a></td>
+        <td><input id='TechnicalContact' type="text" name="TechnicalContact" value={{ data.TechnicalContact }}></td>
+        <td><input id='TechnicalContact' type="text" name="TechnicalContactEmail" value={{ data.TechnicalContactEmail }}></td>
+        {% if data.iso_arn_link != "" %}
+        <td><a href='{{data.iso_arn_link}}'>{{data.iso_role_arn}}</a></td>
+        {% else %}
+        <td>{{data.iso_role_arn}}</td>
+        {% endif %}
+        <td>{{data.iso_role_template_version}}</td>
+      </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary disabled pull-right" id="submit">
+        Submit
+    </button>
+  </form>
+</div>
+<script>
+  var elem = document.createElement('textarea');
+  elem.innerHTML = '{{jsondata}}';
+  var jsonList = JSON.parse(elem.innerHTML)
+  console.log(jsonList)
+
+</script>
+<script src="{% static 'js/cross_account_report.js' %}"></script>
+{% endblock %}

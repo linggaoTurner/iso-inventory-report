@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from inventoryReport.views import cross_account_report
+from dashboard.views import cross_account_report,update_info
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^cross_account_report$',cross_account_report,name='cross_account_report'),
+    url(r'^update_info/',update_info,name='update_info'),
 ]
