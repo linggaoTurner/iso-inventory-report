@@ -26,10 +26,10 @@
         <td>{{ data.account_name }}</td>
         <td><label name='account_id'>{{ data.account_id }}</label></td>
         <td>{{ data.payer_id }}</td>
-        <td><input id='ExecutiveSponsor' type="text" name="ExecutiveSponsor" value={{ data.ExecutiveSponsor }}></td>
-        <td><input id='ExecutiveSponsorEmail' type="text" name="ExecutiveSponsorEmail" value={{ data.ExecutiveSponsorEmail }}></a></td>
-        <td><input id='TechnicalContact' type="text" name="TechnicalContact" value={{ data.TechnicalContact }}></td>
-        <td><input id='TechnicalContact' type="text" name="TechnicalContactEmail" value={{ data.TechnicalContactEmail }}></td>
+        <td><input id='ExecutiveSponsor' type="text" name="ExecutiveSponsor" value='{{ data.ExecutiveSponsor }}'></td>
+        <td><input id='ExecutiveSponsorEmail' type="text" name="ExecutiveSponsorEmail" value='{{ data.ExecutiveSponsorEmail }}'></a></td>
+        <td><input id='TechnicalContact' type="text" name="TechnicalContact" value='{{ data.TechnicalContact }}'></td>
+        <td><input id='TechnicalContact' type="text" name="TechnicalContactEmail" value='{{ data.TechnicalContactEmail }}'></td>
         {% if data.iso_arn_link != "" %}
         <td><a href='{{data.iso_arn_link}}'>{{data.iso_role_arn}}</a></td>
         {% else %}
